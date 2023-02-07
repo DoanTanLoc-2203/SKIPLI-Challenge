@@ -8,6 +8,7 @@ const cors = require("cors");
 
 /* ROUTE */
 const createRoute = require("./src/routes/create.route");
+const githubUserRoute = require("./src/routes/githubUser.route");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -43,6 +44,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/create", createRoute);
+app.use("/github", githubUserRoute);
 
 app.listen(port, "0.0.0.0", () => {
   console.log(`Server is listening at http://localhost:${port}`);

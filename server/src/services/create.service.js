@@ -1,10 +1,10 @@
 const db = require("./fireStore.service");
 
 const createUser = async (payload) => {
-  const { id, phone } = payload;
-  if (!id || !phone) return false;
+  const { id, phoneNumber, accessCode } = payload;
+  if (!id || !phoneNumber || !accessCode) return false;
   const usersDb = db.collection("users");
-  return await usersDb.doc(id).set({ phone, isVerify: false });
+  return await usersDb.doc(phoneNumber).set({ accessCode });
 };
 
 const updateStatusVerify = async (payload) => {
