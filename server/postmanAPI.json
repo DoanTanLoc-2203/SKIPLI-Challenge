@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "87099367-0b09-43ad-ba7d-c4f175305a8e",
-		"name": "New Collection",
+		"name": "Challenge",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25304979"
 	},
@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"phoneNumber\": \"+84859940704\" // Required\n}",
+					"raw": "{\n    \"phoneNumber\": \"+84859940704\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,12 +21,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/create",
-					"protocol": "http",
+					"raw": "{{endpoint}}/create",
 					"host": [
-						"localhost"
+						"{{endpoint}}"
 					],
-					"port": "3000",
 					"path": [
 						"create"
 					]
@@ -41,7 +39,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"phoneNumber\": \"+84859940704\", // Required\n    \"accessCode\": \"409959\" // Required\n}",
+					"raw": "{\n    \"phoneNumber\": \"+84859940704\",\n    \"accessCode\": \"409959\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -49,12 +47,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/create/verify",
-					"protocol": "http",
+					"raw": "{{endpoint}}/create/verify",
 					"host": [
-						"localhost"
+						"{{endpoint}}"
 					],
-					"port": "3000",
 					"path": [
 						"create",
 						"verify"
@@ -67,7 +63,35 @@
 			"name": "Search Github Users",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/github?q=doantanloc",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"github"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "doantanloc",
+							"description": "Required, search text "
+						},
+						{
+							"key": "per_page",
+							"value": null,
+							"description": "Number of row per page",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": null,
+							"description": "Current page",
+							"disabled": true
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -77,12 +101,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/github/detail?github_user_id=123412415",
-					"protocol": "http",
+					"raw": "{{endpoint}}/github/detail?github_user_id=123412415",
 					"host": [
-						"localhost"
+						"{{endpoint}}"
 					],
-					"port": "3000",
 					"path": [
 						"github",
 						"detail"
@@ -113,12 +135,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/github/like",
-					"protocol": "http",
+					"raw": "{{endpoint}}/github/like",
 					"host": [
-						"localhost"
+						"{{endpoint}}"
 					],
-					"port": "3000",
 					"path": [
 						"github",
 						"like"
@@ -145,12 +165,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/user?phoneNumber=%2B84859940704",
-					"protocol": "http",
+					"raw": "{{endpoint}}/user?phoneNumber=%2B84859940704",
 					"host": [
-						"localhost"
+						"{{endpoint}}"
 					],
-					"port": "3000",
 					"path": [
 						"user"
 					],
