@@ -11,12 +11,16 @@ const search = async (payload) => {
 };
 
 const getUser = async (payload) => {
-  const config = {
-    method: "get",
-    url: `https://api.github.com/user/${payload}`,
-    headers: {},
-  };
-  return await axios(config);
+  try {
+    const config = {
+      method: "get",
+      url: `https://api.github.com/user/${payload}`,
+      headers: {},
+    };
+    return await axios(config);
+  } catch {
+    return false;
+  }
 };
 
 module.exports = {

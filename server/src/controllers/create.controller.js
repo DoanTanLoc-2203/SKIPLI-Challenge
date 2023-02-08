@@ -8,8 +8,11 @@ const { formatResponse, generateCode } = require("../utils/common.util");
 async function createNewAccessCode(req, res) {
   try {
     const { phoneNumber } = req?.body;
+
+    // Check require params
     if (!phoneNumber)
       return res.status(400).json(formatResponse("Missing params phoneNumber"));
+
     const id = uuid.v4();
     const accessCode = generateCode();
     const response = await createUserService.createUser({
@@ -35,10 +38,12 @@ async function createNewAccessCode(req, res) {
 async function validateAccessCode(req, res) {
   try {
     const { accessCode, phoneNumber } = req?.body;
+    // Check require params
     if (!phoneNumber || !accessCode)
       return res
         .status(400)
         .json(formatResponse("Missing params phoneNumber or accessCode"));
+
     const user = await userService.getUser(phoneNumber); // Get accessCode
     if (user) {
       if (accessCode == user?.accessCode) {
