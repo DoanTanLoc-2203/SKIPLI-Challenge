@@ -1,4 +1,5 @@
-const fireBaseConfig = { // Service account config
+// Service account config
+const fireBaseConfig = {
   "type": "service_account",
   "project_id": "skipli-916bc",
   "private_key_id": "144eeabcbe46f68227ec574598ab6504e1c68f87",

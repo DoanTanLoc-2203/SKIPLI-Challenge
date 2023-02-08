@@ -1,5 +1,6 @@
 const axios = require("axios");
 
+// Search github user by using API https://api.github.com/search/users
 const search = async (payload) => {
   const config = {
     method: "get",
@@ -10,6 +11,7 @@ const search = async (payload) => {
   return await axios(config);
 };
 
+// Get github user infomation by using API https://api.github.com/user/${id}
 const getUser = async (payload) => {
   try {
     const config = {

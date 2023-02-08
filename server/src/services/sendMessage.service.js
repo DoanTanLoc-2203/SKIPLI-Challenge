@@ -3,6 +3,7 @@ const authToken = process.env.TWILIO_AUTH_TOKEN;
 const servePhoneNumber = process.env.TWILIO_PHONE_NUMBER;
 const client = require("twilio")(accountSid, authToken);
 
+// Sent verify code to client phone number
 const sendMessageVerify = async (code, to) => {
   const message = await client.messages.create({
     body: `Your verify code is: ${code}`,

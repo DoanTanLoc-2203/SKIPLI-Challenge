@@ -1,10 +1,12 @@
 const db = require("./fireStore.service");
 
+// Get user data from firestore
 const getUser = async (phoneNumber) => {
   const user = await db.collection("users").doc(phoneNumber).get();
   return user?.data();
 };
 
+// Remove accessCode
 const removeAccessCode = async (phoneNumber) => {
   const user = await db.collection("users").doc(phoneNumber).update({
     accessCode: "",
@@ -12,6 +14,7 @@ const removeAccessCode = async (phoneNumber) => {
   return user;
 };
 
+// Update liked list github user
 const updateLikedList = async (phoneNumber, github_user_id) => {
   try {
     const user = await db.collection("users").doc(phoneNumber);

@@ -28,7 +28,7 @@ async function createNewAccessCode(req, res) {
       return res
         .status(200)
         .json(formatResponse("Send access code success", { accessCode }));
-    } else return res.status(400).json(formatResponse("Add fail", null));
+    } else return res.status(400).json(formatResponse("Add fail"));
   } catch (error) {
     return res.status(400).json(formatResponse("Error", { error }));
   }

@@ -1,5 +1,7 @@
 const db = require("./fireStore.service");
 
+// If phoneNumber not exist then create new and generate access code
+// else update access code
 const createUser = async (payload) => {
   const { id, phoneNumber, accessCode } = payload;
   if (!id || !phoneNumber || !accessCode) return false;
@@ -14,13 +16,4 @@ const createUser = async (payload) => {
   }
 };
 
-const updateStatusVerify = async (payload) => {
-  const { id } = payload;
-  if (!id) return false;
-  const usersDb = db.collection("users");
-  return await usersDb.doc(id).update({
-    isVerify: true,
-  });
-};
-
-module.exports = { createUser, updateStatusVerify };
+module.exports = { createUser };
