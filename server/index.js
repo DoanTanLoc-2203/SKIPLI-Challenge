@@ -4,7 +4,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
-const session = require("express-session");
 const cors = require("cors");
 
 /* ROUTE */
@@ -24,14 +23,6 @@ app.use(
   })
 );
 app.use(morgan("tiny"));
-app.use(
-  session({
-    resave: true,
-    saveUninitialized: true,
-    secret: "ABCDEFGH",
-    cookie: { maxAge: 60000 },
-  })
-);
 
 // Error handler middleware
 app.use((err, req, res, next) => {

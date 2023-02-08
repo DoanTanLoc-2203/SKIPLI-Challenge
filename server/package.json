@@ -16,7 +16,6 @@
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "express-session": "^1.17.3",
     "firebase-admin": "^11.5.0",
     "twilio": "^3.84.1",
     "uuid": "^9.0.0"
