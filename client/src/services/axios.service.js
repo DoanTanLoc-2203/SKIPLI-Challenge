@@ -5,7 +5,7 @@ export const Post = (url, params, callback) => {
   const body = qs.stringify(params);
   return axios({
     method: "post",
-    url: "http://localhost:3000" + url,
+    url: process.env.REACT_APP_API_ENDPOINT + url,
     headers: {},
     data: body,
   })
