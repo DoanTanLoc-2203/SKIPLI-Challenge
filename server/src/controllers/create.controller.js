@@ -3,6 +3,7 @@ const userService = require("../services/user.service");
 const sendMessageService = require("../services/sendMessage.service");
 const uuid = require("uuid");
 const { formatResponse, generateCode } = require("../utils/common.util");
+const { TWILLO_REGEX_PHONE } = require("../constants/regex");
 
 // Generate access code and store into database
 async function createNewAccessCode(req, res) {
@@ -12,6 +13,8 @@ async function createNewAccessCode(req, res) {
     // Check require params
     if (!phoneNumber)
       return res.status(400).json(formatResponse("Missing params phoneNumber"));
+    if (!TWILLO_REGEX_PHONE.test(phoneNumber))
+      return res.status(400).json(formatResponse("Invalid phone number"));
 
     const id = uuid.v4();
     const accessCode = generateCode();
@@ -21,10 +24,10 @@ async function createNewAccessCode(req, res) {
       accessCode,
     });
     if (response) {
-      // await sendMessageService.sendMessageVerify(
-      //   accessCode,
-      //   phoneNumber,
-      // ); /**TODO: */
+      await sendMessageService.sendMessageVerify(
+        accessCode,
+        phoneNumber,
+      ); /**TODO: */
       return res
         .status(200)
         .json(formatResponse("Send access code success", { accessCode }));
