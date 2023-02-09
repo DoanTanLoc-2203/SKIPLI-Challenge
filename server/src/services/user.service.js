@@ -20,15 +20,15 @@ const updateLikedList = async (phoneNumber, github_user_id) => {
     const user = await db.collection("users").doc(phoneNumber);
     const userData = await user.get();
     if (!userData?.exists) return false; // Check phoneNumber exist
-    const { likeGithubUser } = userData?.data();
+    const { favorite_github_users } = userData?.data();
     let tempList = [];
-    if (Array.isArray(likeGithubUser)) tempList = likeGithubUser;
+    if (Array.isArray(favorite_github_users)) tempList = favorite_github_users;
     // If github_user_id is not exist, push to likeGithubUser list (like)
     if (tempList.indexOf(github_user_id) < 0) tempList.push(github_user_id);
     // else remove from likeGithubUser list (unlike)
     else tempList = tempList.filter((ele) => ele != github_user_id);
     user.update({
-      likeGithubUser: tempList,
+      favorite_github_users: tempList,
     });
     return true;
   } catch {

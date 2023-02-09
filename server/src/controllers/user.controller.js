@@ -15,7 +15,7 @@ async function getUserProfile(req, res) {
       return res
         .status(400)
         .json(formatResponse("Phone number not found!", { success: false }));
-    const likedListId = user?.likeGithubUser;
+    const likedListId = user?.favorite_github_users;
     const listPromise = [];
     // Create promise list to call API get Github User parallel
     if (Array.isArray(likedListId)) {

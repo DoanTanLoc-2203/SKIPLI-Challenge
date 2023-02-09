@@ -12,7 +12,7 @@ const createUser = async (payload) => {
   } else {
     return await usersDb
       .doc(phoneNumber)
-      .set({ accessCode, likeGithubUser: [] });
+      .set({ accessCode, favorite_github_users: [] });
   }
 };
 
