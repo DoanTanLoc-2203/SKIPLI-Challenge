@@ -10,6 +10,7 @@ const sendMessageVerify = async (code, to) => {
     from: servePhoneNumber,
     to: to,
   });
+  console.log({accountSid, authToken ,servePhoneNumber})
   return message;
 };
 
