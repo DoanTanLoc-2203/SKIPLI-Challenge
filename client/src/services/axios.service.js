@@ -6,7 +6,7 @@ import { checkPhoneExits } from "../helpers/validate";
 let endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-  endpoint = "http://localhost:3000";
+  endpoint = "http://localhost:8080";
 }
 
 // Config post request

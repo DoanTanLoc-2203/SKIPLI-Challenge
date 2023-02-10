@@ -1,4 +1,5 @@
 # Project structural
+
 ## Client (ReactJS)
 ```
 📦client
@@ -51,3 +52,90 @@
  ┣ 📜index.js
  ┣ 📜postmanAPI.json (postman API Document)
 ```
+# Environment variable
+## Client (ReactJS)
+```js
+// You can setting for production API endpoint.
+// Path: .env
+REACT_APP_API_ENDPOINT="{Your endpoint}"
+```
+## Server (ExpresJS)
+#### 1. Firebase config:
+***
+```js
+// Assign your account service
+// Path: src/configs/firebase.config.js
+const fireBaseConfig = {...}
+```
+#### 2. Twilio config:
+***
+```js
+// Setting your twilio config
+// Path: .env
+TWILIO_ACCOUNT_SID = "{Your account sid}"
+TWILIO_AUTH_TOKEN = "{Your auth token}"
+TWILIO_PHONE_NUMBER = "{Your phone number}"
+```
+
+
+# How to run this project?
+## Client (ReactJS)
+#### 1. Go to client folder:
+***
+```cmd
+cd ./client
+```
+#### 2. Install packages:
+***
+```cmd
+npm install
+```
+or
+```cmd
+yarn
+```
+#### 3. Start project:
+***
+```cmd
+npm run start
+```
+or
+```cmd
+yarn start
+```
+#### Note: you can config the local API endpoint in folder `\src\services\axios.service.js` (default is http://localhost:8080)
+
+## Server (ExpresJS)
+#### 1. Go to server folder:
+***
+```cmd
+cd ./server
+```
+#### 2. Install packages:
+***
+```cmd
+npm install
+```
+or
+```cmd
+yarn
+```
+#### 3. Start project:
+***
+```cmd
+npm run start
+```
+or
+```cmd
+yarn start
+```
+#### Note: server running at http://localhost:8080 by default.
+
+# API Document
+You can add the file `postmanAPI.json` into Postman to see and sample query all API in ExpressJS server. 
+# Deployment
+Website: https://skipli-challenge.vercel.app (Vercel)
+
+API Endpoint: https://skipli-challenge-server.onrender.com (Render)
+
+#### Note: I currently use a free deploy service therefore sometime the server maybe not working well.

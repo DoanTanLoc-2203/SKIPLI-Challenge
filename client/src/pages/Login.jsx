@@ -6,15 +6,15 @@ import {
   PinInputField,
   Select,
   useToast,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ErrorMessage from "../components/ErrorMessage";
 import { phoneCode } from "../constants/phoneCode";
 import { handleShowMessage } from "../helpers/showMessage";
 import { formatPhoneError, requiredError } from "../helpers/validate";
 import { Post } from "../services/axios.service";
-import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [phone, setPhone] = useState({
@@ -130,7 +130,7 @@ export default function Login() {
         </>
       ) : (
         <>
-          <HStack w="100%" justifyContent="center" spacing="16px">
+          <HStack w="100%" justifyContent="center" flexWrap="wrap" spacing="16px">
             <Select
               value={phone?.code}
               onChange={handleChange("code")}

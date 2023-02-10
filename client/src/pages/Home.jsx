@@ -7,18 +7,17 @@ import {
   InputGroup,
   InputLeftAddon,
   useDisclosure,
-  useToast,
+  useToast
 } from "@chakra-ui/react";
-import React, { useMemo, useRef, useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { BsFillMenuButtonWideFill } from "react-icons/bs";
-import { RiLogoutBoxFill } from "react-icons/ri";
 import { IoSearchSharp } from "react-icons/io5";
+import { RiLogoutBoxFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 import { ProfileModal } from "../components/ProfileModal";
 import { UserTable } from "../components/UserTable";
 import { handleShowMessage } from "../helpers/showMessage";
 import { Get, Post } from "../services/axios.service";
-import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -162,6 +161,7 @@ export default function Home() {
         justifyContent="space-between"
         w="100%"
         position="relative"
+        flexWrap="wrap"
       >
         <Icon
           as={RiLogoutBoxFill}
