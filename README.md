@@ -139,3 +139,15 @@ Website: https://skipli-challenge.vercel.app (Vercel)
 API Endpoint: https://skipli-challenge-server.onrender.com (Render)
 
 #### Note: I currently use a free deploy service therefore sometime the server maybe not working well.
+
+# Some image about this project
+### Login page
+![alt text](./images/Capture1.PNG)
+### Verify code page
+![alt text](./images/Capture2.PNG)
+### Home page
+![alt text](./images/Capture3.PNG)
+### Search result
+![alt text](./images/Capture4.PNG)
+### Profile modal
+![alt text](./images/Capture5.PNG)
