@@ -24,13 +24,16 @@ async function createNewAccessCode(req, res) {
       accessCode,
     });
     if (response) {
-      await sendMessageService.sendMessageVerify(
+      const isSuccess = await sendMessageService.sendMessageVerify(
         accessCode,
-        phoneNumber,
+        phoneNumber
       ); /**TODO: */
-      return res
-        .status(200)
-        .json(formatResponse("Send access code success", { accessCode }));
+      if (!isSuccess)
+        return res.status(400).json(formatResponse("Send access code fail"));
+      else
+        return res
+          .status(200)
+          .json(formatResponse("Send access code success", { accessCode }));
     } else return res.status(400).json(formatResponse("Add fail"));
   } catch (error) {
     return res.status(400).json(formatResponse("Error", { error }));

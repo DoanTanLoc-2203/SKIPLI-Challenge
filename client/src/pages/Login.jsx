@@ -1,7 +1,5 @@
 import {
-  Box,
   Button,
-  Flex,
   HStack,
   Input,
   PinInput,
@@ -10,7 +8,6 @@ import {
   useToast,
   VStack,
 } from "@chakra-ui/react";
-// import { Post } from "../services/axios.service";
 import React, { useState } from "react";
 import ErrorMessage from "../components/ErrorMessage";
 import { phoneCode } from "../constants/phoneCode";
@@ -78,7 +75,10 @@ export default function Login() {
       { phoneNumber: code + number, accessCode },
       handleShowMessage(toast)
     );
-    if (response) navigate("/");
+    if (response) {
+      navigate("/");
+      localStorage.setItem("phoneNumber", code + number);
+    }
     setIsLoading(false);
   };
 

@@ -5,13 +5,16 @@ const client = require("twilio")(accountSid, authToken);
 
 // Sent verify code to client phone number
 const sendMessageVerify = async (code, to) => {
-  const message = await client.messages.create({
-    body: `Your verify code is: ${code}`,
-    from: servePhoneNumber,
-    to: to,
-  });
-  console.log({accountSid, authToken ,servePhoneNumber})
-  return message;
+  try {
+    const message = await client.messages.create({
+      body: `Your verify code is: ${code}`,
+      from: servePhoneNumber,
+      to: to,
+    });
+    return message;
+  } catch {
+    return false;
+  }
 };
 
 module.exports = {

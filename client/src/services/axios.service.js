@@ -1,9 +1,18 @@
 import axios from "axios";
 import qs from "qs";
+import { checkPhoneExits } from "../helpers/validate";
 
-const endpoint = "http://localhost:3000";
+// Get Endpoint API
+let endpoint = process.env.REACT_APP_API_ENDPOINT;
 
+if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+  endpoint = "http://localhost:3000";
+}
+
+// Config post request
 export const Post = (url, params, callback) => {
+  // Check is logged in
+  if (!checkPhoneExits()) window.location.href = "/login";
   const body = qs.stringify(params);
   return axios({
     method: "post",
@@ -20,7 +29,10 @@ export const Post = (url, params, callback) => {
     });
 };
 
+// Config get request
 export const Get = (url, params, callback) => {
+  // Check is logged in
+  if (!checkPhoneExits()) window.location.href = "/login";
   return axios({
     method: "get",
     url: endpoint + url + "?",

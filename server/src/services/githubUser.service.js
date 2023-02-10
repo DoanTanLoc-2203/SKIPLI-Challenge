@@ -5,7 +5,9 @@ const search = async (payload) => {
   const config = {
     method: "get",
     url: "https://api.github.com/search/users",
-    headers: {},
+    headers: {
+      Authorization: "token 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" // Increase rate limit github API
+    },
     params: payload,
   };
   return await axios(config);
@@ -17,7 +19,9 @@ const getUser = async (payload) => {
     const config = {
       method: "get",
       url: `https://api.github.com/user/${payload}`,
-      headers: {},
+      headers: {
+        Authorization: "token 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" // Increase rate limit github API
+      },
     };
     return await axios(config);
   } catch {

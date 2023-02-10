@@ -7,3 +7,10 @@ export const requiredError = (value, fieldName) => {
 export const formatPhoneError = (value, fieldName) => {
   return TWILLO_REGEX_PHONE.test(value) ? null : `${fieldName} is invalid`;
 };
+
+export const checkPhoneExits = () => {
+  return !localStorage.getItem("phoneNumber") &&
+    window.location.pathname !== "/login"
+    ? false
+    : true;
+};

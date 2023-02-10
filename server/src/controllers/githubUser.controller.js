@@ -10,7 +10,28 @@ async function searchGithubUsers(req, res) {
     if (!q) return res.status(400).json(formatResponse("Missing params q"));
 
     const listUser = await githubUserService.search({ q, per_page, page });
-    return res.status(200).json(formatResponse("Get success", listUser?.data));
+
+    const likedListId = listUser?.data?.items?.map((ele) => ele?.id);
+    const listPromise = [];
+    // Create promise list to call API get Github User parallel
+    if (Array.isArray(likedListId)) {
+      likedListId.forEach(async (ele) => {
+        listPromise.push(
+          new Promise((resolve) => {
+            githubUserService.getUser(ele).then((res) => {
+              if (res?.data) resolve(res?.data);
+              else resolve(null);
+            });
+          })
+        );
+      });
+    }
+    const listObject = await Promise.all(listPromise);
+    return res
+      .status(200)
+      .json(
+        formatResponse("Get success", { ...listUser?.data, items: listObject })
+      );
   } catch (error) {
     return res.status(400).json(formatResponse("Error", { error }));
   }
@@ -55,10 +76,10 @@ async function likeGithubUser(req, res) {
     );
 
     if (isSuccess)
-      return res.status(200).json(formatResponse("Liked", { success: true }));
+      return res.status(200).json(formatResponse("Success", { success: true }));
     else
       return res.status(400).json(
-        formatResponse("Like fail or phoneNumber not found!", {
+        formatResponse("Fail or phoneNumber not found!", {
           success: false,
         })
       );

@@ -34,7 +34,7 @@ async function getUserProfile(req, res) {
     return res
       .status(200)
       .json(
-        formatResponse("Get profile success", { likeGithubUser: listObject })
+        formatResponse("Get profile success", { favorite_github_users: listObject })
       );
   } catch (error) {
     return res.status(400).json(formatResponse("Error", { error }));
